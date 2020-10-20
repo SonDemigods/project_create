@@ -21,8 +21,6 @@ const publicPath = process.env.NODE_ENV === 'production'
 module.exports = {
   // 项目基础路径
   publicPath,
-  // 输出文件夹名称
-  outputDir: config.outputDir,
   // 如果你不需要使用eslint，把lintOnSave设为false即可
   lintOnSave: true,
   chainWebpack: config => {
@@ -33,6 +31,8 @@ module.exports = {
   },
   pluginOptions: {
     electronBuilder: {
+      // 在渲染进程中使用node
+      nodeIntegration: true,
       builderOptions: {
         win: {
           icon: './public/app.ico'
