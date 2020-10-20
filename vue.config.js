@@ -1,7 +1,8 @@
 const path = require('path')
 
 // 配置文件
-const config = require('./src/config')
+const config = require('./src/config/common')
+// import config from './src/config'
 
 const resolve = dir => {
   return path.join(__dirname, dir)

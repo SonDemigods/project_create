@@ -1,6 +1,5 @@
 // 导入文件工具包
 import fse from 'fs-extra'
-// const fse = require("fs-extra")
 
 /**
  * @functionName emptyPath

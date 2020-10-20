@@ -8,7 +8,6 @@
 </template>
 
 <script>
-const { dialog } = require('electron').remote
 export default {
   name: 'page-create',
   components: {},
@@ -34,22 +33,10 @@ export default {
     // 选择保存路径
     selectPathHandle () {
       const self = this
-      dialog.showOpenDialog({
-        //默认路径
-        defaultPath: '',
-        //选择操作，此处是打开文件夹
-        properties: [
-          'openDirectory'
-        ],
-        //过滤条件
-        filters: [
-          { name: 'All', extensions: ['*'] }
-        ]
-      }).then(res => {
+      self.$tools.showOpenDialog().then(res => {
+        console.log(res)
         if (!res.canceled) {
-          console.log(res)
           self.selectPath = res.filePaths[0]
-          console.log(self.outPath)
           self.createWeb()
         } else {
           console.log('取消操作！')
@@ -60,8 +47,6 @@ export default {
     // 生成文件
     createWeb () {
       const self = this
-      console.log(self.outPath)
-      // console.log(this.$tools)
       // 清空目录
       self.$tools.emptyPath(self.outPath)
       // 写入文件
